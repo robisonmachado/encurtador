@@ -14,7 +14,7 @@ class EncurtadorController extends Controller
      */
     public function index()
     {
-        //
+        return redirect('/');
     }
 
     /**
@@ -35,7 +35,30 @@ class EncurtadorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->user_id);
+        if($request->url_destino && $request->alias && $request->user_id){
+            if(Encurtador::where('alias', $request->alias)->first()){
+                $url="http://localhost:8000";
+                return "<h1>ERRO: JÁ EXISTE ALIAS</h1> <a href='$url'>VOLTAR</a>";
+            }
+            $encurtador = new Encurtador;
+            $encurtador = $encurtador->create($request->all());
+
+            if($encurtador){
+                $url="http://localhost:8000";
+
+                echo "<h1>ALIAS CRIADO COM SUCESSO</h1> <a href='$url'>VOLTAR</a>";
+                echo "<p>DESTINO: $encurtador->url_destino</p>";
+                echo "<p>ALIAS: $encurtador->alias</p>";
+                return;
+            }else{
+                $url="http://localhost:8000";
+                return "<h1>UM ERRO OCORREU</h1> <a href='$url'>VOLTAR</a>";
+            }  
+        }else{
+            $url="http://localhost:8000";
+            return "<h1>ERRO: DADOS NECESSÁRIOS NÃO ENCONTRADOS</h1> <a href='$url'>VOLTAR</a>";
+        }
     }
 
     /**
@@ -82,4 +105,15 @@ class EncurtadorController extends Controller
     {
         //
     }
+
+    public function redirect(string $alias)
+    {
+        //dd($alias);
+        $encurtador = Encurtador::where('alias', $alias)->first();
+        if($encurtador){
+            return redirect($encurtador->url_destino);
+        }
+        
+    }
+
 }

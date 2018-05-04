@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEncurtadorsTable extends Migration
+class CreateEncurtadorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,13 +16,16 @@ class CreateEncurtadorsTable extends Migration
         Schema::create('encurtador', function (Blueprint $table) {
             $table->increments('id');
             $table->string('url_destino');
-            $table->string('alias');
-            $table->text('observacoes');
+            $table->string('alias')->unique();
+            $table->text('observacoes')->nullable();
 
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')
+                    ->references('id')->on('users')
+                    ->onDelete('cascade');
 
-            $table->integer('cliques')->unsigned();
-            $table->datetime('validade');
+            $table->bigInteger('cliques')->unsigned()->default(0);
+            $table->timestamp('validade')->nullable();
             
             $table->timestamps();
         });
@@ -35,6 +38,6 @@ class CreateEncurtadorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('encurtadors');
+        Schema::dropIfExists('encurtador');
     }
 }

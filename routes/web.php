@@ -16,16 +16,14 @@ Route::get('/', function () {
 });
 
 
-Route::get('bodybuilder', function () {
-    return redirect('https://www.youtube.com/watch?v=vfCozg8Yhxk');
-});
-
 Route::group(['middleware' => ['auth', 'auth.unique.user']],function () {
     
+    Route::resource('encurtador', 'EncurtadorController');
     Route::get('/home', 'HomeController@index')->name('home');
-
 
 });
 
 
 Auth::routes();
+
+Route::get('/{alias}', 'EncurtadorController@redirect');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -39,7 +40,12 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        return '/home';
+        if(Auth::user()->isAdmin()){
+            return '/home';
+        }else{
+            Auth::logout();
+        }       
+        
     }
 
     public function username()
