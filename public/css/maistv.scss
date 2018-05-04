@@ -1,0 +1,229 @@
+
+@import "bootstrap-4.1.0/scss/functions";
+@import "bootstrap-4.1.0/scss/variables";
+@import "bootstrap-4.1.0/scss/mixins";
+
+body {
+    
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;    
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+}
+
+
+.links > a {
+    padding: 0.2em;
+    margin-top: 1em;
+    font-size: 4vmin;
+    font-weight: bold;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+        color: red;
+    }
+
+    &:focus {
+        color: red;
+    }
+}
+
+
+header{
+    background-color: black;
+    font-weight: bold;
+    padding: 1vh;
+}
+
+header span{
+    font-weight: bold;
+    color: red; 
+    border-radius: 0.3em;
+    margin-right: 3vw;    
+}
+
+header a{
+    font-weight: bold !important;
+    margin-right: 1vw;
+    
+    &:hover{
+        background-color: #000055 !important;
+        border-color: white !important;
+    }
+
+    &:focus{
+        background-color: #000055 !important;
+        border-color: white !important;
+    }
+}
+
+
+section {
+    flex: 1;
+    text-align: center;
+    margin-bottom: 20vmin;
+}
+
+section .title {
+    font-weight: bold;
+    font-size: 25vmin;
+}
+
+section .subtitle {
+    font-weight: bold;
+    font-size: 6vmin;
+}
+
+footer{
+    background-color: black;
+}
+
+.wrapper {
+    display: flex;  
+    flex-flow: row wrap;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .wrapper > * {
+    padding: 0.5rem;
+    flex: 1;
+  }
+
+  footer span{
+      color: white;
+      font-size: 0.8rem;
+  }
+
+
+  div.cliente a{
+    padding: 0.5rem;
+    margin: 1vh;
+    font-weight: bold;
+
+    &:hover{
+        background-color: #000055 !important;
+        border-color: white !important;
+    }
+
+    &:focus{
+        background-color: #000055 !important;
+        border-color: white !important;
+    }
+
+  }
+
+  .lancamentos{
+    margin-top: 2vmin;
+    margin-bottom: 2vmin;
+  }
+
+  .filme_container{ 
+    background-color: black;
+    border: thin solid #333;
+    color:white;
+    font-weight: bold;
+    font-size: 2.5vmin;
+    margin: 1vmin;
+
+    @include media-breakpoint-up(lg) {
+        width: 12vw;
+        height: 16vw;
+    }
+
+    @include media-breakpoint-down(lg) {
+        width: 18vw;
+        height: 23vw;
+    }
+
+    @include media-breakpoint-down(md) {
+        width: 28vw;
+        height: 37vw;
+    }
+
+    @include media-breakpoint-down(md) {
+        width: 28vw;
+        height: 37vw;
+       }
+  
+    @include media-breakpoint-down(sm) {
+        width: 42vw;
+        height: 55vw;
+       }
+  
+    @include media-breakpoint-down(xs) { 
+            width: 38vw;
+            height: 50vw;
+       }
+  }
+ 
+
+  div.lancamentos  a img{
+    width: 100%;
+    height: 100%;
+
+}
+
+  section h2.lancamentos {
+    font-weight: bold;
+    font-size: 7vmin;
+    @include media-breakpoint-up(lg) {
+        font-size: 5vmin;
+    }
+
+  }
+
+
+
+.lista_generos{
+    list-style: none;
+    
+}
+
+.item_genero{
+    border: thin solid black;
+    width: 15vw;
+    font-weight: bold;
+    
+    &:focus{
+        background-color: #000055 !important;
+        border-color: white;
+        
+    }
+
+    &:hover{
+        background-color: #000055 !important;
+        border-color: white;  
+    }
+
+    @include media-breakpoint-down(md) {
+        width: 90vw;
+       }
+  
+       @include media-breakpoint-down(sm) {
+        width: 42vw;
+       }
+  
+       @include media-breakpoint-down(xs) { 
+            width: 90vw;
+       }
+    
+}
+
+.container * {
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+
+
+
+

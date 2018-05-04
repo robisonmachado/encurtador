@@ -1,0 +1,158 @@
+body {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #000; }
+
+.links > a {
+  padding: 0.2em;
+  margin-top: 1em;
+  font-size: 4vmin;
+  font-weight: bold;
+  letter-spacing: .1rem;
+  text-decoration: none;
+  text-transform: uppercase; }
+  .links > a:hover {
+    color: red; }
+  .links > a:focus {
+    color: red; }
+
+header {
+  background-color: black;
+  font-weight: bold;
+  padding: 1vh; }
+
+header span {
+  font-weight: bold;
+  color: red;
+  border-radius: 0.3em;
+  margin-right: 3vw; }
+
+header a {
+  font-weight: bold !important;
+  margin-right: 1vw; }
+  header a:hover {
+    background-color: #000055 !important;
+    border-color: white !important; }
+  header a:focus {
+    background-color: #000055 !important;
+    border-color: white !important; }
+
+section {
+  flex: 1;
+  text-align: center;
+  margin-bottom: 20vmin; }
+
+section .title {
+  font-weight: bold;
+  font-size: 25vmin; }
+
+section .subtitle {
+  font-weight: bold;
+  font-size: 6vmin; }
+
+footer {
+  background-color: black; }
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center; }
+
+.wrapper > * {
+  padding: 0.5rem;
+  flex: 1; }
+
+footer span {
+  color: white;
+  font-size: 0.8rem; }
+
+div.cliente a {
+  padding: 0.5rem;
+  margin: 1vh;
+  font-weight: bold; }
+  div.cliente a:hover {
+    background-color: #000055 !important;
+    border-color: white !important; }
+  div.cliente a:focus {
+    background-color: #000055 !important;
+    border-color: white !important; }
+
+.lancamentos {
+  margin-top: 2vmin;
+  margin-bottom: 2vmin; }
+
+.filme_container {
+  background-color: black;
+  border: thin solid #333;
+  color: white;
+  font-weight: bold;
+  font-size: 2.5vmin;
+  margin: 1vmin; }
+  @media (min-width: 992px) {
+    .filme_container {
+      width: 12vw;
+      height: 16vw; } }
+  @media (max-width: 1199.98px) {
+    .filme_container {
+      width: 18vw;
+      height: 23vw; } }
+  @media (max-width: 991.98px) {
+    .filme_container {
+      width: 28vw;
+      height: 37vw; } }
+  @media (max-width: 991.98px) {
+    .filme_container {
+      width: 28vw;
+      height: 37vw; } }
+  @media (max-width: 767.98px) {
+    .filme_container {
+      width: 42vw;
+      height: 55vw; } }
+  @media (max-width: 575.98px) {
+    .filme_container {
+      width: 38vw;
+      height: 50vw; } }
+
+div.lancamentos a img {
+  width: 100%;
+  height: 100%; }
+
+section h2.lancamentos {
+  font-weight: bold;
+  font-size: 7vmin; }
+  @media (min-width: 992px) {
+    section h2.lancamentos {
+      font-size: 5vmin; } }
+
+.lista_generos {
+  list-style: none; }
+
+.item_genero {
+  border: thin solid black;
+  width: 15vw;
+  font-weight: bold; }
+  .item_genero:focus {
+    background-color: #000055 !important;
+    border-color: white; }
+  .item_genero:hover {
+    background-color: #000055 !important;
+    border-color: white; }
+  @media (max-width: 991.98px) {
+    .item_genero {
+      width: 90vw; } }
+  @media (max-width: 767.98px) {
+    .item_genero {
+      width: 42vw; } }
+  @media (max-width: 575.98px) {
+    .item_genero {
+      width: 90vw; } }
+
+.container * {
+  background-color: #000;
+  color: white;
+  font-weight: bold; }
