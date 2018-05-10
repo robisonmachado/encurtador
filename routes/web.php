@@ -11,15 +11,17 @@
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('index');
-});
+}); */
 
+Route::get('/', 'EncurtadorController@index');
 
 Route::group(['middleware' => ['auth', 'auth.unique.user']],function () {
     
     Route::resource('encurtador', 'EncurtadorController');
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/lista/{quantidade}/{pagina}', 'EncurtadorController@index');
 
 });
 

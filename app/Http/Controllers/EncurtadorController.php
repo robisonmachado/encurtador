@@ -12,9 +12,14 @@ class EncurtadorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($quantidade=100, $pagina=1)
     {
-        return redirect('/');
+        $urls_encurtadas = Encurtador::orderBy('alias')->get();
+        //dd($urls_encurtadas);
+
+        return view('index',[
+            'urls_encurtadas' => $urls_encurtadas
+        ]);
     }
 
     /**

@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         $usuario = Auth::user();
         if ($usuario->isAdmin()) {
-            return view('index');
+            return redirect('encurtador');
         }else {
             $url="http://localhost:8000";
             return "<h1>ERRO</h1> <a href='$url'>VOLTAR</a>";

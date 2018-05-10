@@ -5,37 +5,51 @@
 @endsection
 
 @section('content')
-                <div class="title">
-                    +ENCURTADOR
+                <div class="d-flex flex-column">
+                    <div class="title">
+                        +ENCURTADOR
+                    </div>
+                    <div class="subtitle">
+                        o seu encurtador muito +rápido!
+                    </div>
                 </div>
-                <div class="subtitle">
-                    o seu encurtador muito +rápido!
-                </div>
-
+                
                 @auth
                 @if ( Auth::user()->isAdmin() )
-                <form action="{{ url('encurtador') }}" method="POST" class="d-flex flex-column">
+                <form action="{{ url('encurtador') }}" method="POST" class="form-encurtador d-flex flex-column justify-content-center align-items-center">
                     @csrf
 
                     
-                    <label for="url_destino" class"">URL DESTINO</label>
-                    <input type="text" name="url_destino" id="url_destino">
+                    <label for="url_destino" class"col-12">URL DESTINO</label>
+                    <input type="text" name="url_destino" id="url_destino" class="col-12 col-md-10">
 
-                    <label for="alias">ALIAS</label>
-                    <input type="text" name="alias" id="alias">
+                    <label for="alias" class="col-12">ALIAS</label>
+                    <input type="text" name="alias" id="alias" class="col-12 col-md-10">
 
-                    <label for="observacoes">OBSERVAÇÕES</label>
-                    <textarea name="observacoes" id="observacoes" cols="30" rows="10"></textarea>
+                    <label for="observacoes" class="col-12">OBSERVAÇÕES</label>
+                    <textarea name="observacoes" id="observacoes" class="col-12 col-md-10"></textarea>
                     
-                    <label for="validade">VALIDADE</label>
-                    <input type="date" name="validade" id="validade">
+                    <label for="validade" class="col-12">VALIDADE</label>
+                    <input type="date" name="validade" id="validade" class="col-12 col-md-10">
                     
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
-                    <input type="submit" value="ENCURTAR" class="btn btn-primary">
+                    <input type="submit" value="ENCURTAR" class="submit btn btn-primary">
                     
                 </form>
-                            
+                  
+                <ul class="lista-urls d-flex flex-column justify-content-center align-items-center">
+                @foreach($urls_encurtadas as $url_encurtada)
+                    <li class="url w-100 row justify-content-center align-items-center">
+                        <div class="alias col-12 col-lg-9 text-truncate">{{ $url_encurtada->alias }}</div>
+                        <a class="btn btn-primary col-5 col-lg-auto"
+                           href="{{ url('/encurtador/'.$url_encurtada->id.'/edit') }}">EDITAR</a>
+                        <a class="btn btn-primary col-5 col-lg-auto"
+                           href="{{ url('/encurtador/'.$url_encurtada->id.'/delete') }}">EXCLUIR</a>
+                    </li>
+                @endforeach
+                </ul>
+
                 @endif
     
                 @endauth
