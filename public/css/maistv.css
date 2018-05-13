@@ -85,11 +85,11 @@ footer span {
   list-style: none;
   padding: 0;
   margin: 0;
-  border: thin solid red;
   margin-top: 5vmin; }
   .lista-urls .url {
     border: thin solid white;
-    margin-top: 3vmin; }
+    margin-top: 3vmin;
+    padding: 3vmin; }
   .lista-urls div {
     padding: 2vmin; }
   .lista-urls a {
@@ -97,6 +97,5 @@ footer span {
   .lista-urls a:last-child {
     margin-left: 1vmin; }
   .lista-urls .alias {
-    border: thin solid green;
     font-weight: bold;
     font-size: 4vmin; }

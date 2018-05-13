@@ -16,10 +16,9 @@
                 
                 @auth
                 @if ( Auth::user()->isAdmin() )
-                <form action="{{ url('encurtador') }}" method="POST" class="form-encurtador d-flex flex-column justify-content-center align-items-center">
+                <form action="{{ url('encurtador') }}" id="formURL" method="POST" class="form-encurtador d-flex flex-column justify-content-center align-items-center">
                     @csrf
 
-                    
                     <label for="url_destino" class"col-12">URL DESTINO</label>
                     <input type="text" name="url_destino" id="url_destino" class="col-12 col-md-10">
 
@@ -43,12 +42,39 @@
                     <li class="url w-100 row justify-content-center align-items-center">
                         <div class="alias col-12 col-lg-9 text-truncate">{{ $url_encurtada->alias }}</div>
                         <a class="btn btn-primary col-5 col-lg-auto"
-                           href="{{ url('/encurtador/'.$url_encurtada->id.'/edit') }}">EDITAR</a>
-                        <a class="btn btn-primary col-5 col-lg-auto"
-                           href="{{ url('/encurtador/'.$url_encurtada->id.'/delete') }}">EXCLUIR</a>
+                            id="editButton"
+                            href="{{ url('/encurtador/'.$url_encurtada->id.'/edit') }}">EDITAR</a>
+                        <a class="btn btn-primary col-5 col-lg-auto" 
+                            id="deleteButton" 
+                            onclick="excluirURL({{ $url_encurtada->id}})">EXCLUIR</a>
                     </li>
                 @endforeach
                 </ul>
+
+                <form action="{{ url('/encurtador/') }}" method="POST" id="formDestroyURL">
+                    @method('DELETE')
+                    @csrf
+                </form>
+
+                <script>
+                    function excluirURL(url_id){
+                        action = '{{ url('/encurtador') }}/'+url_id;
+                        formDestroy = $("#formDestroyURL");
+                        formDestroy.attr(
+                            'action', action
+                            );
+
+                        teste = formDestroy.attr('action');
+                        console.log( teste );
+                        if(confirm('Deseja realmente excluir o ALIAS')){
+                            formDestroy.submit();
+                        }
+                        
+                        
+                    }
+                    
+
+                </script>
 
                 @endif
     

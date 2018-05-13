@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class EncurtadorController extends Controller
 {
+    protected static $index_url;
+    function __construct(){
+        self::$index_url = url('/');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -43,26 +47,21 @@ class EncurtadorController extends Controller
         //dd($request->user_id);
         if($request->url_destino && $request->alias && $request->user_id){
             if(Encurtador::where('alias', $request->alias)->first()){
-                $url="http://localhost:8000";
-                return "<h1>ERRO: JÁ EXISTE ALIAS</h1> <a href='$url'>VOLTAR</a>";
+                return "<h1>ERRO: JÁ EXISTE ALIAS</h1> <a href='".self::$index_url."'>VOLTAR</a>";
             }
             $encurtador = new Encurtador;
             $encurtador = $encurtador->create($request->all());
 
             if($encurtador){
-                $url="http://localhost:8000";
-
-                echo "<h1>ALIAS CRIADO COM SUCESSO</h1> <a href='$url'>VOLTAR</a>";
+                echo "<h1>ALIAS CRIADO COM SUCESSO</h1> <a href='".self::$index_url."'>VOLTAR</a>";
                 echo "<p>DESTINO: $encurtador->url_destino</p>";
                 echo "<p>ALIAS: $encurtador->alias</p>";
                 return;
             }else{
-                $url="http://localhost:8000";
-                return "<h1>UM ERRO OCORREU</h1> <a href='$url'>VOLTAR</a>";
+                return "<h1>UM ERRO OCORREU</h1> <a href='".self::$index_url."'>VOLTAR</a>";
             }  
         }else{
-            $url="http://localhost:8000";
-            return "<h1>ERRO: DADOS NECESSÁRIOS NÃO ENCONTRADOS</h1> <a href='$url'>VOLTAR</a>";
+            return "<h1>ERRO: DADOS NECESSÁRIOS NÃO ENCONTRADOS</h1> <a href='".self::$index_url."'>VOLTAR</a>";
         }
     }
 
@@ -85,7 +84,10 @@ class EncurtadorController extends Controller
      */
     public function edit(Encurtador $encurtador)
     {
-        //
+        //dd('form edit url');
+        return view('form_edit_url',[
+            'url_encurtada' => $encurtador
+        ]);
     }
 
     /**
@@ -97,7 +99,11 @@ class EncurtadorController extends Controller
      */
     public function update(Request $request, Encurtador $encurtador)
     {
-        //
+        $encurtador->update($request->all());
+        echo "<h1>ALIAS EDITADO COM SUCESSO</h1> <a href='".self::$index_url."'>VOLTAR</a>";
+        echo "<p>DESTINO: $encurtador->url_destino</p>";
+        echo "<p>ALIAS: $encurtador->alias</p>";
+        return;
     }
 
     /**
@@ -108,7 +114,9 @@ class EncurtadorController extends Controller
      */
     public function destroy(Encurtador $encurtador)
     {
-        //
+        //dd($encurtador);
+        Encurtador::destroy($encurtador->id);
+        return redirect('/');
     }
 
     public function redirect(string $alias)

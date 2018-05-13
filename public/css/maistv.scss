@@ -126,12 +126,12 @@ footer{
     list-style: none;
     padding: 0;
     margin: 0;
-    border: thin solid red ;
     margin-top: 5vmin;
     
     .url {
         border: thin solid white;         
         margin-top: 3vmin;
+        padding: 3vmin;
     }
 
     div{
@@ -151,7 +151,6 @@ footer{
     }
 
     .alias{
-        border: thin solid green;
         font-weight: bold;
         font-size: 4vmin;   
     }

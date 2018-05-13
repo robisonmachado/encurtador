@@ -21,7 +21,7 @@ Route::group(['middleware' => ['auth', 'auth.unique.user']],function () {
     
     Route::resource('encurtador', 'EncurtadorController');
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/lista/{quantidade}/{pagina}', 'EncurtadorController@index');
+    Route::get('/encurtador/{quantidade}/{pagina}', 'EncurtadorController@index');
 
 });
 
